@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+
+    <link rel="stylesheet" href="./css/base.css">
+
+    <script src="js/jquery-3.3.1.js" type="text/javascript" ></script>
+    <script src="js/bootstrap.bundle.js" type="text/javascript" ></script>
+    <script src="js/bootstrap.js" type="text/javascript" ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+img:hover {
+    transform: scale(1.25); 
+	
+}
+img {
+	 transition: transform 1s;
+    max-width: 100%;
+    max-height: 100%;
+
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h5>Homework #4 Graph Visualization</h5>
+        <h1>Title: Diseasome Network</h1>
+
+        <p>Visualization of Diseasome network data using Gephi to encode features of data in order to gain insights.</p>
+        <b>Designed by Pranay Jagtap</b>
+		
+				
+    </div>
+   <hr/>
+     <div  class="row" style="background-color:#E8E8E8;border-radius: 15px;">
+		<div class="col-lg-10">
+			<ul> Notes:
+			<li>Total Graphs:8</li>
+			<li>List of graphs: Default(raw data), modularity graph(10 communities), degree centrality graph, betweenness centrality graph, eigen vector centrality graph.</li>
+			<li>For centrality measures, there are 2 graphs for each where in the one on left inidcates centrality measure for entire graph which is then filtered to produce only the top centrality holder nodes along with lables</li>
+		</div>
+	 </div>
+   
+    
+<hr/>
+    <div  class="row" style="background-color:#E8E8E8;border-radius: 15px;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5" >
+            <h4 align="center">Default graph</h4>
+				<img src="gephi-exported-files/untitled.png" alt="Smiley face" height="85%" width="100%"/>
+			<p align="center">Graph 1</p>
+		</div>
+		 <div class="col-lg-5" >
+            <h4 align="center">Modularity Graph</h4>
+				<img src="gephi-exported-files/modularityNoFilter.png" alt="Smiley face" height="85%" width="100%"/>
+			<p align="center">Graph 2</p>
+		</div>
+        
+        <div class="col-lg-1"></div>
+    </div>
+    <hr>
+	<div  class="row" style="background-color:#E8E8E8;border-radius: 15px;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5" >
+            <h4 align="center">Degree Centrality</h4>
+				<img src="gephi-exported-files/degreeCentrality.png" alt="Smiley face" height="85%" width="100%"/>
+			<p align="center">Graph 3</p>
+		</div>
+		 <div class="col-lg-5" >
+            <h4 align="center">Labled Degree Centrality(Filtered)</h4>
+				<img src="gephi-exported-files/labledDegreeCentrality.png" alt="Smiley face" height="85%" width="100%"/>
+			<p align="center">Graph 4</p>
+		</div>
+        
+        <div class="col-lg-1"></div>
+    </div>
+	<hr/>
+    <div  class="row" style="background-color:#E8E8E8;border-radius: 15px;">
+        <div class="col-lg-12">
+			<ul>Dataset
+			<li>It is a network of disorders and disease genes and it indicates the common genetic origin of different diseases.</li>
+			<li>Dataset can be found <a href="https://github.com/gephi/gephi/wiki/Datasets">here</a></li>
+			<li>Dataset consists of disease genes and resulting diseases. The resulting network is that of disease genes and diseases associated with them combined to produce a good cause-effect bi-partite graph that can be visualized to gain insights on how these disease genes relate with diseases and other disease genes.</li>
+			<li>It is interesting to note how this network when simply plotted as a graph would not provide much information. However, on applying layout algorithms and statistics, we can visualize these disease genes and diseases successfully to gain hidden knowledge</li>
+			<li><b>Marks:</b> We make use of circular nodes and connectingg edges as marks in the graph</li>
+			<li><b>Channels:</b> We make use of size of nodes and their colors as channels to represent their importance/ values.</li>
+			</ul>
+			
+			<ul>Default Graph
+			<li>Graph 1 is the default graph representation of nodes and edges in a diseasome network.</li>
+			</ul>
+			<ul>a) Do you find communities (modularity) in the graph? Yes, we see Modularity in our graph for diseasome as seen in graph 2..
+			<li>We add modularity to the original graph in Gephi by setting resolution as 5 which results in graph 2 where we can see 10 communities</li>
+			<li>As the dataset consists of disease genes and its associated diseases, we can see communities being formed with strongly associated genes that lead to one or more diseases</li>
+			<li>Therefore, we find 10 communities in our graphs which are color coded to see distinct communities. We make use of nooverlap and Fruchterman Reigngold layout algorithm to get good visualization</li>
+			<li>This randomized clustering helps us visualizing how different disease classes and genetic origins can be modularized which can help in further group analysis as we can expect a community to show stronger feature similarity</li>
+			</ul>
+			<ul>b) What is the average degree centrality? Average degree centrality of the network is <b>2.767</b>
+			<li>The size of each node is proportional to the number of genes participating in the corresponding disorder.</li>
+			<li>A degree centrality of approximate  3 indicates that on an average 3 genes/class participate in realization of a particular disorder.</li>
+			<li>Degree centrality of disease nodes are expected to be higher as multiple disease causing genes can lead upto them</li>
+			<li>Graph 3 shows a complete netwrok graph with size and color attribute indicating nodes with high degree centrality</li>
+			<li>Graph 4 is filtered to show nodes with degree centrality measure of 55 or more and we can see top 10 nodes with respect to degree centrality.</li>
+			</ul>	
+			<ul>c) What is the average betweenness centrality?  The average betweenness centraility of our network is <b>6.6487</b>
+			<li>High value of Betweenness centrality shows that given node has large influence of information flow in the graph.</li>
+			<li>An average betweenness value of 6.6487 indicates that not many genetic origin finds its way to connect with different diseases through other genetic nodes.</li>
+			<li>We can observe that Cardiomyopathy belonging to class Cardiovascular has the highest value of about 333925 followed by Diabetis,Glioblastoma,deafness.</li>
+			<li>Hence, it indicates that these are some of the common diseases under different classes which connect genetic classes to other diseases in diseasome network</li>
+			<li>To improve visualization and make data obvious for the user we use Isometric layout to pull out nodes with higher betweenness centrality.</li>
+			<li>Graph 5 is partitioned using size and color indicating which node has higher betweenness centrality while graph 6 is further filtered with degree of node to get top nodes in terms of betweenness centrality</li>
+			<li>Graph 6 is filtered to show nodes with high betweenness centrality.</li>
+			</ul>
+			<ul>d) What is the average Eigenvector centrality? The average Eigen vector centraility of our network is <b>0.064</b>
+			<li>Eigen vector centrality is calculated by counting the scores based on connection of nodes with other nodes with high scores. So it basically gives us an idea of how influential a node is in a network.</li>
+			<li>Since our average Eigenvector centrality value is low, it suggests that influential nodes arent well distributed.</li>
+			<li>Highest Eigen vector value is of node Colon cancer with Eigen vector centrality value of 1 which is the highest so it is connected to all others indicating it has the highest influence on network. This means given this node, all other nodes have a higher chance of existing in network or rather most genes nodes can lead to Colon cancer node.</li>
+			<li> <b>Graphs 7 and 8 fulfil the requirement of making node sizes linearly dependent on eigen vector centrality and we also make use of color hue as required for homework.</b>
+			<li>Graph 7 is partitioned using size and color indicating which node has higher eigen vector centrality while graph 7 is further filtered with degree of node to get top nodes in terms of eigen vector centrality</li>
+			<li>Graph 8 is filtered to show nodes with high eigen vector centrality.</li>
+			</ul>
+        </div>
+    </div>
+	
+
+    <hr/>
+
+	 <div  class="row" style="background-color:#E8E8E8;border-radius: 15px;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5" >
+            <h4 align="center">Betweeness Centrality</h4>
+				<img src="gephi-exported-files/betweennessCentrality.png" alt="Smiley face" height="85%" width="100%"/>
+				<p align="center">Graph 5</p>
+		</div>
+		<div class="col-lg-5" >
+            <h4 align="center">Labled Between Centrality(Filtered)</h4>
+				<img src="gephi-exported-files/labledBetweenness.png" alt="Smiley face" height="85%" width="100%"/>
+				<p align="center">Graph 6</p>
+		</div>
+        
+        <div class="col-lg-1"></div>
+    </div>
+    <hr>
+    
+	
+	<div  class="row" style="background-color:#E8E8E8;border-radius: 15px;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5" >
+            <h4 align="center">Eigen Centrality</h4>
+				<img src="gephi-exported-files/EigenCentrality.png" alt="Smiley face" height="85%" width="100%"/>
+				<p align="center">Graph 7</p>
+		</div>
+		 <div class="col-lg-5" >
+            <h4 align="center">Labled Eigen Centrality(Filtered)</h4>
+				<img src="gephi-exported-files/LabledEigenCentrality.png" alt="Smiley face" height="85%" width="100%"/>
+				<p align="center">Graph 8</p>
+		</div>
+        
+        <div class="col-lg-1"></div>
+    </div>
+    <hr>
+    <div  class="row" style="background-color:#E8E8E8;border-radius: 15px;">
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-3"></div>
+    </div>
+	
+
+    <hr>
+</div>
+</body>
+</html>
